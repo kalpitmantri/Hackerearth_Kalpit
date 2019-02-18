@@ -1,0 +1,95 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+	<h1 style="text-align: center;margin-top: 20px;">Wines List</h1>
+	<br>
+	<h2 class="filter_head">Filters</h2>
+	<div class="filter_box">
+		<div class="row" style="margin: 0 auto;">
+			<div class="col-md-6" style="margin-bottom: 30px;margin-top: 20px; margin-left:auto;margin-right: auto;">
+				<form class="form-inline" method="post" action="{% url 'wines:byVariety' %}">
+				  {%csrf_token%}	
+				  <h3><label class="my-1 mr-2" for="inlineFormCustomSelectPref">Variety</label></h3>
+				  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="variety">
+				  	{% for variety in varieties %}
+					    <option value="{{variety}}">{{variety}}</option>
+				    {% endfor %}   
+				  </select>
+				  <button type="submit" class="btn btn-primary my-1">Submit</button>
+				</form>		
+			</div>
+			<div class="col-md-6" style="margin-bottom: 30px;margin-top: 20px;">
+				<form class="form-inline" method="post" action="{% url 'wines:byCountry' %}">
+				  {%csrf_token%}	 
+				  <h3><label class="my-1 mr-2" for="inlineFormCustomSelectPref">Country</label></h3>
+				  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="country">
+				  	{% for country in countries %}
+					    <option value="{{country}}">{{country}}</option>
+				    {% endfor %}   
+				  </select>
+				  <button type="submit" class="btn btn-primary my-1">Submit</button>
+				</form>		
+			</div>
+		</div>
+		<div class="row" style="margin: 0 auto">
+			<div class="col-md-6" style="margin-bottom: 30px;margin-top: 20px;">
+				<form class="form-inline" method="post" action="{% url 'wines:byProvince' %}">
+				  {%csrf_token%}	
+				  <h3><label class="my-1 mr-2" for="inlineFormCustomSelectPref">Province</label></h3>
+				  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="province">
+				  	{% for province in provincies %}
+					    <option value="{{province}}">{{province}}</option>
+				    {% endfor %}   
+				  </select>
+				  <button type="submit" class="btn btn-primary my-1">Submit</button>
+				</form>		
+			</div>
+			<div class="col-md-6" style="margin-bottom: 30px;margin-top: 20px;">
+				<form class="form-inline" method="post" action="{% url 'wines:byRegion' %}">
+				  {%csrf_token%}	
+				  <h3><label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label></h3>
+				  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="region">
+				  	{% for region in regions %}
+					    <option value="{{region}}">{{region}}</option>
+				    {% endfor %}   
+				  </select>
+				  <button type="submit" class="btn btn-primary my-1">Submit</button>
+				</form>		
+			</div>
+		</div>
+	</div>
+	<h2 class="filter_head">Sort By : </h2>
+	<div class="filter_head">
+		<form action="{%url 'wines:sortByPrice'%}" method="post">
+			{%csrf_token%}
+			<button class="btn btn-primary my-1">Price</button>
+		</form>
+	</div>
+	<div class="wines">
+		<div class="row">
+			{% for wine in wines %}
+				<div class="col-md-6">
+					<div class="card wine_card">
+						<div class="card-body">
+					    	<h5 class="card-title">{{wine.designation}}</h5>
+					    	<h6 class="card-subtitle mb-2 text-muted">Brand - {{wine.winery}}</h6>
+					    	<p class="card-text">{{wine.snippet}}</p>
+						    <div>
+						    	<div class="card detail-table">
+								   <ul class="list-group list-group-flush">
+									    <li class="list-group-item"><b>Variety</b> - {{wine.variety}}</li>
+									    <li class="list-group-item"><b>Country</b> - {{wine.country}}</li>
+									    <li class="list-group-item"><b>Province</b> - {{wine.province}}</li>
+									    <li class="list-group-item"><b>Region </b>- {{wine.region_1}},{{wine.region_2}}</li>
+									</ul>
+								</div>
+						    </div>	
+						    <span class="badge badge-success tag">Price - ${{wine.price}}</span>
+							<span class="badge badge-warning tag">Rating - {{wine.points}}</span>
+						</div>
+					</div>
+				</div>
+			{% endfor %}	
+		</div>
+	</div>
+{% endblock %}	

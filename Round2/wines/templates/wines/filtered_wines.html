@@ -1,0 +1,33 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+	<h1 style="text-align: center;margin-top: 20px;">{{head}}</h1>
+	<br>
+	<div class="wines">
+		<div class="row">
+			{% for wine in wines %}
+				<div class="col-md-6">
+					<div class="card wine_card">
+						<div class="card-body">
+					    	<h5 class="card-title">{{wine.designation}}</h5>
+					    	<h6 class="card-subtitle mb-2 text-muted">Brand - {{wine.winery}}</h6>
+					    	<p class="card-text">{{wine.snippet}}</p>
+						    <div>
+						    	<div class="card detail-table">
+								   <ul class="list-group list-group-flush">
+									    <li class="list-group-item"><b>Variety</b> - {{wine.variety}}</li>
+									    <li class="list-group-item"><b>Country</b> - {{wine.country}}</li>
+									    <li class="list-group-item"><b>Province</b> - {{wine.province}}</li>
+									    <li class="list-group-item"><b>Region </b>- {{wine.region_1}},{{wine.region_2}}</li>
+									</ul>
+								</div>
+						    </div>	
+						    <span class="badge badge-success tag">Price - ${{wine.price}}</span>
+							<span class="badge badge-warning tag">Rating - {{wine.points}}</span>
+						</div>
+					</div>
+				</div>
+			{% endfor %}	
+		</div>
+	</div>
+{% endblock %}	

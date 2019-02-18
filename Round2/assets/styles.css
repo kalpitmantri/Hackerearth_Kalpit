@@ -1,0 +1,75 @@
+.wine_card{
+	width: 28rem;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+.detail-table{
+	width: 20rem;
+	margin: 10px auto;
+}
+
+.tag{
+	padding:10px;
+}
+
+.list_nav{
+	font:white;
+}
+
+.filter_head{
+	margin-bottom: 20px;
+	margin-left: 40px;
+}
+.filter_box{
+	border:2px solid black;
+	margin-bottom: 40px;
+	margin-left: 40px;
+}
+
+.site-form {
+    margin-top: 60px;
+    border: 1px solid #337ab7;
+    padding: 20px;
+}
+
+.site-form input, .site-form textarea{
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+}
+
+a.highlight{
+    border: 1px solid #337ab7;
+    padding: 10px;
+    border-radius: 4px;
+    color: #337ab7;
+}
+
+.helptext, .helptext ul{
+    margin: 0 auto 20px;
+    color: #bbb;
+    font-size: 14px;
+    display: block;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #FF5722;
+    margin: 10px 0;
+    color: #FF5722
+}
+
+.errorlist{
+    padding: 0;
+}
+
+.site-form input[type="submit"]{
+    background: #337ab7;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
